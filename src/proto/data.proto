@@ -2,14 +2,19 @@ syntax = "proto3";
 
 package protobuf;
 
+option go_package = ".";
+
 service StreamService {
-  rpc FetchResponse (Request) returns (stream Response) {}
+  rpc FetchResponse(Request) returns (stream Response) {}
 }
 
-message Request {
-  int32 id = 1;
-}
+message Request { int32 id = 1; }
 
 message Response {
-  string result = 1;
+  int64 id = 1;
+  string message = 2;
+  string name = 3;
+  string address = 4;
+  int64 amount = 5;
+  int64 price = 6;
 }
