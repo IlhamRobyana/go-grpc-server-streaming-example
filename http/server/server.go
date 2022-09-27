@@ -39,7 +39,7 @@ func Handle(w http.ResponseWriter, r *http.Request) {
 }
 
 func HandleWebSockets(ws *websocket.Conn) {
-	for i := 0; i < 1000000; i++ {
+	for i := 0; i < 10000000; i++ {
 		log.Printf("Sending some data: %d", i)
 		m := Message{
 			Id:      i,
@@ -75,7 +75,7 @@ func HandleHttp(w http.ResponseWriter, r *http.Request) {
 
 	enc := json.NewEncoder(w)
 
-	for i := 0; i < 1000000; i++ {
+	for i := 0; i < 10000000; i++ {
 		select {
 		case <-cn.CloseNotify():
 			log.Printf("Client stopped listening")
